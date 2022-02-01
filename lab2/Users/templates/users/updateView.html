@@ -1,0 +1,39 @@
+{% extends 'navbar.html' %}
+
+
+{% load static %}
+
+{% block content %}
+
+    <title>updateuser</title>
+
+    <link href="{%static 'css/contact.css'%}" rel="stylesheet" >
+
+{%endblock%}
+
+{% block navB %}
+    {{ request.session.username  }}
+{% endblock %}
+
+{% block logout %}
+   <button class="btn btn-danger" style="padding: 0.5px"><a class="nav-link" href="{% url 'my_logout' %}" style="color: white">logout</a></button>
+{% endblock %}
+
+
+{% block body %}
+    <div class="container">
+
+    <form method="post">
+    {%csrf_token%}
+    <center>
+           <h1>Update Student</h1>
+    </center>
+     <input type="text" name="name" placeholder="Enter new username" class="tex" required>
+     <input type="submit" value="update" class="sub">
+    <div style="width: 100%;padding: 10px;color: darkred ; text-align: center;font-size: 20px">
+            <span  >{{ msg }}</span>
+    </div>
+</form>
+
+</div>
+{% endblock %}

@@ -1,4 +1,4 @@
-input[type=text], select {
+.tex {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -10,9 +10,11 @@ input[type=text], select {
 
 
 
-input[type=submit] {
+
+
+.sub {
   width: 100%;
-  background-color: #4CAF50;
+  background-color: black;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -21,12 +23,17 @@ input[type=submit] {
   cursor: pointer;
 }
 
-input[type=submit]:hover {
-  background-color: #45a049;
+.pass{
+    width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
 }
 
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
+.sub:hover {
+  background-color: darkred;
 }
+

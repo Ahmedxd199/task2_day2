@@ -1,35 +1,37 @@
 {%extends 'navbar.html' %}
-
+{% load static %}
 <html>
-<head>
-    <title>
-      {%block Title%}
-      contact
-      {%endblock%}
-    </title>
+{% block content %}
 
-</head>
+<title>contact</title>
 
 
 
- {%block content%}
+    <link href="{%static 'css/contact.css'%}" rel="stylesheet" >
 
-   <div>
+   {%endblock%}
+
+
+{#{% block logout %}#}
+{#<button class="btn btn-danger" style="padding: 5px"><a class="nav-link" href="{% url 'my_logout' %}" style="color: white">logout</a></button>#}
+{#{% endblock %}#}
+
+ {%block body%}
+
+   <div class="container">
+    <center>
+           <h1>Contact</h1>
+    </center>
   <form >
     <label for="fname">First Name</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+    <input type="text" id="fname" name="firstname" placeholder="Your name.." class="tex">
 
     <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+    <input type="text" id="lname" name="lastname" placeholder="Your last name.." class="tex">
 
-    <label for="country">Country</label>
-    <select id="country" name="country">
-      <option value="australia">Australia</option>
-      <option value="canada">Canada</option>
-      <option value="usa">USA</option>
-    </select>
 
-    <input type="submit" value="Submit">
+
+    <input type="submit" value="Submit" class="sub">
   </form>
 </div>
 
