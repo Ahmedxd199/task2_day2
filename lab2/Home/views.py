@@ -19,18 +19,10 @@ def register(request):
         return render(request, 'home/register.html', context)
     else:
 
-        # intsake reques.post
-        print(request.POST)
+        #print(request.POST)
         name = request.POST['name']
         pas= request.POST['pass']
-        # save to db  intake table
-        '''
-        myintake=Intake()
-        myintake.intakename=name
-        myintake.startdate=sdate
-        myintake.enddate=endate
-        myintake.save()
-        '''
+
         Register.objects.create(username=name, password=pas )
         User.objects.create_user(username=request.POST['name'], password=request.POST['pass'], is_staff=True)
         users = Register.objects.all()
@@ -77,12 +69,25 @@ def my_logout(request):
 
 
 
-def list_user(request):
-    pass
-
 
 def updateV(request,id):
-     return render(request, 'users/updateView.html')
+     context={}
+     if request.method == "GET":
+         return render(request, 'users/updateView.html')
+     else:
+         username = request.POST.get('name')
+         user = Register.objects.get(id=id)
+         print(user)
+         if user:
+             user.username = username
+             user.save()
+             users = Register.objects.all()
+             context['users'] = users
+             return render(request, 'userlogin.html', context)
+         else:
+             context['msg'] = "did not find this user"
+             return render(request, 'users/updateView.html', context)
+
 
 def deleteuser(request,id):
     context={}
@@ -122,14 +127,12 @@ def deleteuser(request,id):
 #         else:
 #             context['msg'] = "did not find this user"
 #             return render(request, 'users/updateView.html', context)
-
-
-def updateuser(request):
-    if request.method == "GET":
-        return redirect(updateV)
-    else:
-        return redirect(view)
-
-
-def view(request):
-    return render(request, 'userlogin.html')
+#
+#
+#
+# def view(request):
+#     if request.method == "GET":
+#         render(request,"updateView.html")
+#         print("1")
+#     else:
+#         return redirect(userlogin)

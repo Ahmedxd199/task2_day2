@@ -16,33 +16,16 @@
 {% endblock %}
 
 {% block logout %}
+
+           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+           <button class="btn btn-success" style="padding: 0.5px;margin-right: 10px"><a class="nav-link" href="{% url 'my_logout' %}" style="color: white">Search</a></button>
+
    <button class="btn btn-danger" style="padding: 0.5px"><a class="nav-link" href="{% url 'my_logout' %}" style="color: white">logout</a></button>
 {% endblock %}
 
 
 {% block body %}
     <div class="container">
-{#  <table width="100%" border="1">#}
-{#        <tr>#}
-{#            <td>ID</td>#}
-{#            <td>Name</td>#}
-{#            <td>Actions</td>#}
-{#        </tr>#}
-{##}
-{#        {%for user in  users %}#}
-{#             <tr>#}
-{#                <td>{{user.id}}</td>#}
-{#                <td>{{user.username}}</td>#}
-{#                 <td>#}
-{#                     <a href="{%url 'deleteintake' intake.id %}">Delete</a>#}
-{#                     <a href="{%url 'updateintake' intake.id %}">Update</a>#}
-{#                 </td>#}
-{##}
-{#             </tr>#}
-{#    {%endfor%}#}
-{#    </table>#}
-
-
 
     <table class="table">
   <thead>
@@ -59,7 +42,7 @@
                 <td>{{user.username}}</td>
                  <td>
                      <button class="btn btn-danger"><a style="color: white;text-decoration: none;" href="{%url 'deleteuser' user.id %}">Delete</a></button>
-                     <button class="btn btn-danger"><a style="color: white;text-decoration: none;" href="{%url 'updateV' user.id %}">Update</a></button>
+                     <button class="btn btn-success"><a style="color: white;text-decoration: none;" href="{%url 'updateV' user.id %}">Update</a></button>
                  </td>
 
              </tr>
