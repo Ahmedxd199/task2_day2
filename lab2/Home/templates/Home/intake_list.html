@@ -1,0 +1,43 @@
+{%extends 'navbar.html'%}
+{% load static %}
+
+
+{% block content %}
+
+<title>Intake list</title>
+
+
+
+    <link href="{%static 'css/contact.css'%}" rel="stylesheet" >
+
+   {%endblock%}
+
+{% block body %}
+
+<div class="container">
+
+
+   <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">NAME</th>
+    </tr>
+  </thead>
+  <tbody>
+ {%for intake in  object_list %}
+             <tr>
+                <td>{{intake.id}}</td>
+                <td>{{intake.name}}</td>
+
+
+             </tr>
+   {%endfor%}
+
+  </tbody>
+</table>
+
+</div>
+      {%endblock%}
+
+

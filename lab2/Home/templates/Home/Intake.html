@@ -1,0 +1,29 @@
+{%extends 'navbar.html'%}
+{% load static %}
+
+
+{% block content %}
+
+<title>Intake</title>
+
+
+
+    <link href="{%static 'css/contact.css'%}" rel="stylesheet" >
+
+   {%endblock%}
+
+{% block body %}
+
+<div class="container">
+
+
+<form method="post">
+    {%csrf_token%}
+     <center>
+    <h1>INTAKE</h1>
+    </center>
+    <input type="text" name="intake" placeholder="Enter Intake" required class="tex">
+    <input type="submit" value="signup" class="sub">
+</form>
+</div>
+      {%endblock%}

@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'lab2.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'iti',
+        'NAME': 'iti2',
         'USER': 'postgres',
         'PASSWORD': 'ahmed@123',
         'HOST': 'localhost',

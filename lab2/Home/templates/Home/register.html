@@ -1,0 +1,31 @@
+{%extends 'navbar.html'%}
+{% load static %}
+
+
+{% block content %}
+
+<title>register</title>
+
+
+
+    <link href="{%static 'css/contact.css'%}" rel="stylesheet" >
+
+   {%endblock%}
+
+{% block body %}
+
+<div class="container">
+
+
+<form method="post">
+    {%csrf_token%}
+     <center>
+    <h1>SignUp</h1>
+    </center>
+    <input type="text" name="name" placeholder="Enter username" class="tex" required>
+    <input type="text" name="intake" placeholder="Enter Intake" required class="tex">
+    <input type="password" name="pass" placeholder="Enter password" required class="pass">
+    <input type="submit" value="signup" class="sub">
+</form>
+</div>
+      {%endblock%}

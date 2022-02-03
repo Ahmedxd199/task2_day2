@@ -1,0 +1,24 @@
+{% extends 'navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block Title %}
+        About
+    {% endblock %}</title>
+</head>
+<body>
+
+{% block body %}
+<div align="center">
+    <h1>Hello Ahmed</h1>
+</div>
+<div align="center" width="100px">
+{% load static %}
+  <img src="{%static 'imgs/dd.jpg'%}" width="50%">
+
+</div>
+
+{% endblock %}
+</body>
+</html>

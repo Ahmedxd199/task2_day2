@@ -1,0 +1,41 @@
+{%extends 'navbar.html' %}
+{% load static %}
+<html>
+{% block content %}
+
+<title>contact</title>
+
+
+
+    <link href="{%static 'css/contact.css'%}" rel="stylesheet" >
+
+   {%endblock%}
+
+
+{#{% block logout %}#}
+{#<button class="btn btn-danger" style="padding: 5px"><a class="nav-link" href="{% url 'my_logout' %}" style="color: white">logout</a></button>#}
+{#{% endblock %}#}
+
+ {%block body%}
+
+   <div class="container">
+    <center>
+           <h1>Contact</h1>
+    </center>
+  <form >
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name.." class="tex">
+
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lastname" placeholder="Your last name.." class="tex">
+
+
+
+    <input type="submit" value="Submit" class="sub">
+  </form>
+</div>
+
+
+{% endblock %}
+
+</html>

@@ -32,6 +32,7 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">NAME</th>
+        <th scope="col">PASSWORD</th>
       <th scope="col">ACTION</th>
     </tr>
   </thead>
@@ -40,6 +41,7 @@
              <tr>
                 <td>{{user.id}}</td>
                 <td>{{user.username}}</td>
+                 <td>{{user.password}}</td>
                  <td>
                      <button class="btn btn-danger"><a style="color: white;text-decoration: none;" href="{%url 'deleteuser' user.id %}">Delete</a></button>
                      <button class="btn btn-success"><a style="color: white;text-decoration: none;" href="{%url 'updateV' user.id %}">Update</a></button>

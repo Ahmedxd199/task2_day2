@@ -1,35 +1,85 @@
 from django.shortcuts import render, redirect,HttpResponseRedirect
-from .models import Register
+from .models import Register,Intake
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login as authlogin ,logout
+from django.views import View
+from .forms import AddUserForm,AddUserFormModel
+from django.views.generic import ListView
+
 # Create your views here.
 
+
+class Intakelist(ListView):
+    model = Intake
+
+
+
 def contact(request):
-    return render(request, 'home/contact.html')
+    return render(request, 'Home/contact.html')
 def home(request):
     return render(request, 'navbar.html')
 
 def about(request):
-    return render(request, 'home/aboutus.html')
+    return render(request, 'Home/aboutus.html')
 
+def insertIntake(request):
+    if request.method == "GET" :
+        return render(request, 'Home/Intake.html')
+    else:
+        intake = request.POST['intake'];
+        intakes = Intake.objects.create(name = intake)
+        return render(request, 'Home/Intake.html')
+
+
+class insertForm1(View):
+    def get(self, request):
+        context = {}
+        context['form'] = AddUserForm()
+        return render(request, 'Home/SignForm1.html',context)
+    def post(self, request):
+        form = AddUserForm(request.POST)
+        if form.is_valid():
+            choise=request.POST['IntakeF']
+            print(choise)
+            tractobj = Intake.objects.get(id=request.POST['IntakeF'])
+            Register.objects.create(username=request.POST['name'], password=request.POST['password'], Intakeid=tractobj)
+            #User.objects.create_user(username=request.POST['name'], password=request.POST['pass'], is_staff=True)
+
+            return redirect(login)
+
+class insertForm2Model(View):
+    def get(self, request):
+        context = {}
+        context['form'] = AddUserFormModel()
+        return render(request, 'Home/SignUpForm2Model.html',context)
+    def post(self, request):
+        form = AddUserFormModel(request.POST)
+        if form.is_valid():
+            form.save()
+            context={}
+            context['form'] = AddUserFormModel()
+            context['msg']="Success Insert INTAKE"
+            return render(request, 'Home/SignUpForm2Model.html',context)
 
 def register(request):
     context = {}
     if (request.method == 'GET'):
-        return render(request, 'home/register.html', context)
+        return render(request, 'Home/register.html', context)
     else:
 
         #print(request.POST)
         name = request.POST['name']
         pas= request.POST['pass']
-
-        Register.objects.create(username=name, password=pas )
+        intake=request.POST['intake']
+        print(intake)
+        tractobj = Intake.objects.get(name=request.POST['intake'])
+        Register.objects.create(username=name, password=pas, Intakeid=tractobj )
         User.objects.create_user(username=request.POST['name'], password=request.POST['pass'], is_staff=True)
         users = Register.objects.all()
         # context['users'] = users
         # request.session['users'] = users
         # context['msg'] = 'success register'
-        #return render(request, 'home/login.html', context)
+        #return render(request, 'Home/login.html', context)
         return redirect(login)
 
 def login(request):
@@ -37,7 +87,7 @@ def login(request):
     context={}
     if ( request.method == 'GET' ):
         context['msg'] = ""
-        return render(request, 'home/login.html')
+        return render(request, 'Home/login.html')
     else:
         user = Register.objects.filter(username=request.POST['name'] , password=request.POST['pass'])
         auth=authenticate(username=request.POST['name'], password=request.POST['pass'])

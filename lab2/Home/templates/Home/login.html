@@ -1,0 +1,36 @@
+{%extends 'navbar.html'%}
+
+{% load static %}
+
+{% block content %}
+
+<title>login</title>
+
+
+
+    <link href="{%static 'css/contact.css'%}" rel="stylesheet" >
+
+   {%endblock%}
+
+
+
+
+{% block body %}
+<div class="container">
+
+<form method="post">
+    {%csrf_token%}
+    <center>
+           <h1>Login</h1>
+    </center>
+     <input type="text" name="name" placeholder="Enter username" class="tex" required>
+    <input type="password" name="pass" placeholder="Enter password" required class="pass">
+    <input type="submit" value="login" class="sub">
+    <div style="width: 100%;padding: 10px;color: darkred ; text-align: center;font-size: 20px">
+            <span  >{{ msg }}</span>
+    </div>
+</form>
+
+</div>
+
+{% endblock %}

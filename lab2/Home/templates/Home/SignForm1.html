@@ -1,0 +1,31 @@
+{%extends 'navbar.html'%}
+{% load static %}
+
+
+{% block content %}
+
+<title>register</title>
+
+
+
+    <link href="{%static 'css/contact.css'%}" rel="stylesheet" >
+
+   {%endblock%}
+
+{% block body %}
+
+<div class="container">
+
+
+<form method="post">
+    {%csrf_token%}
+     <center>
+    <h1>SignUp Form1</h1>
+         <br>
+            {{ form.as_p }}
+    <input type="submit" value="signup" class="sub">
+    </center>
+
+</form>
+</div>
+      {%endblock%}
